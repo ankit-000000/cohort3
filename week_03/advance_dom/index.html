@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input type="text" /><button onclick="addToDo()">Add To Do</button>
+    <div class="todos"></div>
+    <script>
+      let todos = [];
+      render();
+      function addToDo() {
+        todos.push({
+          title: document.querySelector("input").value,
+        });
+        render();
+      }
+      function deleteToDo() {}
+
+      function render() {
+        if (todos.length > 0) {
+          document.querySelector(".todos").innerHTML = "";
+          for (let i = 0; i < todos.length; i++) {
+            const divElement = document.createElement("div");
+            const titleElement = document.createElement("h4");
+            const deleteElement = document.createElement("button");
+
+            divElement.setAttribute("id", "todo-" + i);
+            divElement.setAttribute("style", "display:flex");
+            titleElement.innerHTML = i + ". " + todos[i].title;
+            deleteElement.innerHTML = "Delete";
+
+            divElement.appendChild(titleElement);
+            divElement.appendChild(deleteElement);
+            document.querySelector(".todos").appendChild(divElement);
+          }
+        } else {
+          const divElement = document.createElement("div");
+          divElement.innerHTML = "there are no todos";
+          document.querySelector(".todos").appendChild(divElement);
+        }
+      }
+    </script>
+  </body>
+</html>
