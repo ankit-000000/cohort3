@@ -36,3 +36,8 @@ Recoil is a state management library for React. It is a replacement for useState
 ### useRecoilState
 
 - this is a hook that returns a function that can be used to update the value of the atom and also returns the value of the atom.
+
+### selector
+
+- a selector is somthing which can be derived from atoms or other selectors and does not depend on any other thing.
+- it is better that use memo approach because we can create one more selector which depends on the first selector and it beign used in other components while if we use useMemo we will need to recalculate it there again.
